@@ -1,5 +1,4 @@
 import os
-from assistant import ChatbotAssistant
 
 
 if __name__ == "__main__":
