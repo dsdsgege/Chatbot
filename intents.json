@@ -1,0 +1,24 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Szia", "Jó napot!", "Hello", "Szevasz", "Üdv!"],
+      "responses": ["Szia! Miben segíthetek?"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Viszlát", "Szia", "További szép napot!"],
+      "responses": ["Viszlát!", "Remélem, tudtam segíteni!"]
+    },
+    {
+      "tag": "profession",
+      "patterns": ["Mivel foglalkoztok?", "Mi ez a cég?", "Mik a szolgáltatások?", "Milyen szolgáltatásaitok vannak?"],
+      "responses": ["A Deltabio 2000 kft. kutatás mellett mikrobiom és hüvelybiom vizsgálati szolgáltatásokat nyújt."]
+    }, 
+    {
+        "tag": "contact",
+        "patterns" : ["Mik az elérhetőségek?", "Elérhetőség?", "Nyitvatartás?", "Meddig vagytok nyitva?"],
+        "responses" : ["A temesvári krt. 62 alatt lehet személyesen elérni minket 8:00-16:00 órákban, vagy a kapcsolat@mikrobiomvizsgalatok.hu email címen."]
+    }
+  ]
+}
