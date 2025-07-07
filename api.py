@@ -18,7 +18,7 @@ except FileNotFoundError:
 
     assistant.save_model("chatbot_model.pth", "dimensions.json")
 
-
+# endpoint for chatting with the model
 @app.route("/chat", methods = ['POST'])
 def chat():
     if assistant is None:
@@ -28,7 +28,6 @@ def chat():
     
     # get data from request object
     data = request.get_json()
-
     if not data or "message" not in data.keys():
         return jsonify({
             "error" : "Nem megfelelő kérés"

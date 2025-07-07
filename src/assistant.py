@@ -9,7 +9,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 
-from model import Model 
+from .model import Model 
 
 class ChatbotAssistant:
     def __init__(self, intents_path, function_mapping = None):
@@ -122,7 +122,7 @@ class ChatbotAssistant:
 
     def process_message(self, input_message):
         words = self.tokenize_and_lemmatize(input_message)
-        bag = self.bag_of_words(input_message, self.vocabulary)
+        bag = self.bag_of_words(words, self.vocabulary)
 
         bag_tensor = torch.tensor([bag], dtype=torch.float32)
 
