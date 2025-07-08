@@ -1,7 +1,7 @@
 import json
 from flask import Flask, render_template, jsonify, request
 from src.assistant import ChatbotAssistant
-from flask.cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
@@ -50,4 +50,4 @@ chat window
 """
 @app.route("/", methods= ["GET"])
 def chatWindow():
-    return render_template("templates/chat.html")
+    return render_template("chat.html")
