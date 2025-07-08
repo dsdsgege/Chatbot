@@ -42,13 +42,10 @@ class ChatbotAssistant:
         return [1 if word in words else 0 for word in vocabulary]
 
     def parse_intents(self):
-        lemmatizer = nltk.WordNetLemmatizer()
-
         if os.path.exists(self.intents_path):
             with open(self.intents_path, 'r', encoding='utf-8') as file:
                 intents_data = json.load(file)
 
-            
             for intent in intents_data["intents"]:
                 if intent["tag"] not in self.intents:
                     self.intents.append(intent["tag"])

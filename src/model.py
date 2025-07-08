@@ -20,4 +20,3 @@ class Model(nn.Module):
         x = self.fc3(x)                             # dont apply ReLU, because these are the logits for softmax
                                                     # if a logit is negative it's important information - model thinks the input is not part of the classification
         return x
-          
