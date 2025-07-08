@@ -1,4 +1,5 @@
 import json
+import os
 from flask import Flask, render_template, jsonify, request
 from src.assistant import ChatbotAssistant
 from flask_cors import CORS, cross_origin
@@ -38,10 +39,24 @@ def chat():
         return jsonify({
             "error" : "Nem megfelelő kérés"
             })
+    
     message = data["message"]
-    response = jsonify({
-        "response" :  assistant.process_message(message)
-        })
+    print(message)
+    try:
+        response = jsonify({
+            "response" :  assistant.process_message(message)
+            })
+    
+    except RuntimeError:
+        os.remove("chatbot_model.pth")
+        assistant.parse_intents()
+        assistant.prepare_data()
+        assistant.train_model(8, 0.001, 100)
+
+        assistant.save_model("chatbot_model.pth", "dimensions.json")
+        response = jsonify({
+            "response" :  assistant.process_message(message)
+            })
     
     return response
 

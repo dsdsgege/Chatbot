@@ -45,7 +45,7 @@ class ChatbotAssistant:
         lemmatizer = nltk.WordNetLemmatizer()
 
         if os.path.exists(self.intents_path):
-            with open(self.intents_path, 'r') as file:
+            with open(self.intents_path, 'r', encoding='utf-8') as file:
                 intents_data = json.load(file)
 
             

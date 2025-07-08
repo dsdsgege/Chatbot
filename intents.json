@@ -6,19 +6,30 @@
       "responses": ["Szia! Miben segithetek?"]
     },
     {
+      "tag": "thanks",
+      "patterns": ["Köszi!", "Köszönöm!", "kösz", "Kedves tőled."],
+      "responses": ["Szívesen, kérsz valamiben még segítséget?", "Szívesen!", "Nem probléma, bármikor segítek"]
+    },
+    {
+      "tag": "payment",
+      "patterns": ["Befizettem!", "Befizettem a pénzt, de nem tudom letölteni a fájlt", "Nem érhető el a dokumentum.", "Elutaltam a pénzt", "pénzt"],
+      "responses": ["Miután befizetted a díjat, 1-2 napot kell várnod, hogy elérhető legyen a dokumentum"]
+    },
+
+    {
       "tag": "goodbye",
       "patterns": ["Viszlát", "Szia", "További szép napot!"],
-      "responses": ["Viszlat!", "Remelem, tudtam segiteni!"]
+      "responses": ["Viszlát!", "Viszlát, remélem tudtam segíteni!"]
     },
     {
       "tag": "profession",
-      "patterns": ["Mivel foglalkoztok?", "Mi ez a cég?", "Mik a szolgáltatások?", "Milyen szolgáltatásaitok vannak?"],
-      "responses": ["A Deltabio 2000 kft. kutatas mellett mikrobiom és huvelybiom vizsgalati szolgaltatasokat nyujt."]
-    }, 
+      "patterns": ["Mivel foglalkoztok?", "Mi ez a cég?", "Mik a szolgáltatások?", "Milyen szolgáltatásaitok vannak?", "Szolgáltatásaid?"],
+      "responses": ["A Deltabio 2000 kft. kutatás mellett mikrobiom és hüvelybiom vizsgálati szolgáltatásokat nyujt."]
+    },
     {
-        "tag": "contact",
-        "patterns" : ["Mik az elérhetőségek?", "Elérhetőség?", "Nyitvatartás?", "Meddig vagytok nyitva?"],
-        "responses" : ["A temesvari krt. 62 alatt lehet szemelyesen elerni minket 8:00-16:00 orakban, vagy a kapcsolat@mikrobiomvizsgalatok.hu email címen."]
+      "tag": "contact",
+      "patterns" : ["Mik az elérhetőségek?", "elér", "Elérhetőség?", "Nyitvatartás?", "Meddig vagytok nyitva?", "Hol a cég?", "Hova kell menjek?"],
+      "responses" : ["A Temesvári krt. 62 alatt lehet személyesen elérni minket 8:00-16:00 órákban, vagy a kapcsolat@mikrobiomvizsgalatok.hu email címen."]
     }
   ]
 }

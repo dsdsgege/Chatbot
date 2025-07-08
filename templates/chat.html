@@ -3,20 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chatbot</title>
 </head>
 <body>
-    <form action="" method="post" id="chat_form">
-        <label for="">Mond</label>
-        <input type="text" name="question">
-        <button type="submit">Küldés</button>
-    </form>
+    <div id="chat-window" style="border:1px solid #ccc; height: 300px; width: 30%; position: fixed; right: 0; bottom: 0; overflow-y: scroll; padding: 10px;">    </div>
+
+    <input type="text" id="user-input" placeholder="Írj egy üzenetet..." style="width: 25%; position: fixed; right: 0; bottom: 0;">
+    <button id="send-btn" style=" position: fixed; right: 0; bottom: 0;">Küldés</button>
 </body>
 </html>
 <script>
-    var form = document.getElementById("chat_form");
-    fetch("http://127.0.0.1:5000")
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error("error:", error));
+    const chatWindow = document.getElementById("chat-window");
+    const userInput = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-btn");
+
+    sendButton.addEventListener('click', sendMessage);
+
+    sendButton.addEventListener('keypress', function (e) {
+        if(e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        const message = userInput.value;
+
+        if(!message) return;
+
+        chatWindow.innerHTML += '<p><b>Te:</b>'+ message +'</p>';
+        userInput.value = "";
+
+        fetch("http://localhost:5000/chat", {
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({"message" : message})
+        })
+        .then(response => {
+            if(!response.ok) throw new Error("SERVER-SIDE ERROR");
+            return response.json();
+        })
+        .then(data => { 
+            chatWindow.innerHTML += '<p><b>Maris:</b>'+ data.response +'</p>';
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        })
+        .catch(error => {
+            console.error("ERORR " + error);
+            chatWindow.innerHTML += `<p><b>Hiba:</b> A chatbot nem elérhető.</p>`;
+        });
+    }
+
 </script>
